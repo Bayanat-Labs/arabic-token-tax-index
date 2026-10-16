@@ -1,0 +1,293 @@
+version: 0.1.0
+notes: 'Tokenizer files only; revisions pinned. Each `equivalents` entry is checked at run time: it must give the same token
+  count as the main entry on every segment and probe line.'
+tokenisers:
+- id: o200k_base
+  label: OpenAI o200k_base
+  vendor: OpenAI
+  route: tiktoken
+  encoding: o200k_base
+  models:
+  - gpt-5 family (gpt-5*)
+  - gpt-4.5
+  - gpt-4.1
+  - gpt-4o
+  - o1
+  - o3
+  - o4-mini
+  licence: MIT (tiktoken)
+  models_basis: tiktoken 0.14.0 model-to-encoding table
+  equivalents:
+  - route: tiktoken
+    encoding: o200k_harmony
+    models:
+    - gpt-oss-120b
+    - gpt-oss-20b
+  - route: hf
+    repo_id: openai/gpt-oss-120b
+    revision: b5c939de8f754692c1647ca79fbf85e8c1e70f8a
+    models:
+    - gpt-oss-120b
+- id: cl100k_base
+  label: OpenAI cl100k_base
+  vendor: OpenAI
+  route: tiktoken
+  encoding: cl100k_base
+  models:
+  - gpt-4
+  - gpt-3.5-turbo
+  licence: MIT (tiktoken)
+  models_basis: tiktoken 0.14.0 model-to-encoding table
+  equivalents: []
+- id: qwen3
+  label: Qwen3
+  vendor: Alibaba Qwen
+  route: hf
+  repo_id: Qwen/Qwen3-235B-A22B
+  revision: 8efa61729e24bd65b1d152b5ab5409052aa80e65
+  models:
+  - Qwen3-235B-A22B
+  licence: Apache-2.0
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents:
+  - route: hf
+    repo_id: Qwen/Qwen3-8B
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+    models:
+    - Qwen3-8B
+  - route: hf
+    repo_id: Qwen/Qwen3-Next-80B-A3B-Instruct
+    revision: 9c7f2fbe84465e40164a94cc16cd30b6999b0cc7
+    models:
+    - Qwen3-Next-80B-A3B-Instruct
+- id: qwen3.5
+  label: Qwen3.5 / 3.6 / 3.8
+  vendor: Alibaba Qwen
+  route: hf
+  repo_id: Qwen/Qwen3.5-397B-A17B
+  revision: 8472618112abcbd45acbcdc58436aff4233c23f7
+  models:
+  - Qwen3.5-397B-A17B
+  licence: Apache-2.0
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents:
+  - route: hf
+    repo_id: Qwen/Qwen3.5-27B
+    revision: fc05daec18b0a78c049392ed2e771dde82bdf654
+    models:
+    - Qwen3.5-27B
+  - route: hf
+    repo_id: Qwen/Qwen3.6-27B
+    revision: 6a9e13bd6fc8f0983b9b99948120bc37f49c13e9
+    models:
+    - Qwen3.6-27B
+  - route: hf
+    repo_id: Qwen/Qwen3.6-35B-A3B
+    revision: 995ad96eacd98c81ed38be0c5b274b04031597b0
+    models:
+    - Qwen3.6-35B-A3B
+  - route: hf
+    repo_id: Qwen/Qwen3.8-27B
+    revision: 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0
+    models:
+    - Qwen3.8-27B
+  - route: hf
+    repo_id: Qwen/Qwen3.8-2.4T-A95B
+    revision: 207bd685a7e3696cfaff12ded7c6a7ea0f88c996
+    models:
+    - Qwen3.8-2.4T-A95B
+  - route: hf
+    repo_id: Qwen/Qwen3.8-Flash-Next
+    revision: de4b8e4d43b917e7706784d8bb445c9af86a3540
+    models:
+    - Qwen3.8-Flash-Next
+- id: deepseek
+  label: DeepSeek V3 / V4
+  vendor: DeepSeek
+  route: hf
+  repo_id: deepseek-ai/DeepSeek-V4-Pro-0813
+  revision: 72e1d3230f6c080a530b0a1d46f8eb4602340597
+  models:
+  - DeepSeek-V4-Pro-0813
+  licence: MIT
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents:
+  - route: hf
+    repo_id: deepseek-ai/DeepSeek-V4.1-Flash
+    revision: 5254448103b6254fc646dacbca1cbbf20e9216c1
+    models:
+    - DeepSeek-V4.1-Flash
+  - route: hf
+    repo_id: deepseek-ai/DeepSeek-V4-Pro
+    revision: b5968e9190ef611bbf34a7229255be88a0e937c1
+    models:
+    - DeepSeek-V4-Pro
+  - route: hf
+    repo_id: deepseek-ai/DeepSeek-V4-Flash
+    revision: 60d8d70770c6776ff598c94bb586a859a38244f1
+    models:
+    - DeepSeek-V4-Flash
+  - route: hf
+    repo_id: deepseek-ai/DeepSeek-V3.2
+    revision: a7e62ac04ecb2c0a54d736dc46601c5606cf10a6
+    models:
+    - DeepSeek-V3.2
+  - route: hf
+    repo_id: deepseek-ai/DeepSeek-V3.1
+    revision: c0781d039fb7a1ba2abc4add0bdc293e92d2b8db
+    models:
+    - DeepSeek-V3.1
+  - route: hf
+    repo_id: deepseek-ai/DeepSeek-V3
+    revision: e815299b0bcbac849fa540c768ef21845365c9eb
+    models:
+    - DeepSeek-V3
+- id: mistral-tekken
+  label: Mistral Tekken
+  vendor: Mistral AI
+  route: hf
+  repo_id: mistralai/Mistral-Small-4-119B-2603
+  revision: a11f36bebf709121056b1dbcc943d1c6afbe494d
+  models:
+  - Mistral-Small-4-119B-2603
+  licence: Apache-2.0
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents:
+  - route: hf
+    repo_id: mistralai/Mistral-Medium-3.5-128B
+    revision: 22b2b868a15677cfa6061277ed2f653d1349a9ab
+    models:
+    - Mistral-Medium-3.5-128B
+  - route: hf
+    repo_id: mistralai/Mistral-Large-3-675B-Instruct-2512
+    revision: 383ffea2c7d60dfd44ca960e8e691709d4fdb9cd
+    models:
+    - Mistral-Large-3-675B-Instruct-2512
+  - route: hf
+    repo_id: mistralai/Ministral-3-8B-Instruct-2512
+    revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d
+    models:
+    - Ministral-3-8B-Instruct-2512
+  - route: hf
+    repo_id: mistralai/Mistral-Nemo-Instruct-2407
+    revision: 04d8a90549d23fc6bd7f642064003592df51e9b3
+    models:
+    - Mistral-Nemo-Instruct-2407
+- id: gemma4
+  label: Gemma 4 / Fanar-2
+  vendor: Google; QCRI
+  route: hf
+  repo_id: google/gemma-4-31B-it
+  revision: 842da3794eaa0b77d5f08bae87a17459d91ff475
+  models:
+  - gemma-4-31B-it
+  licence: Apache-2.0
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents:
+  - route: hf
+    repo_id: google/gemma-4-26B-A4B-it
+    revision: 4d7ae4984b7db7de8f8457170b3f1a419ee76d52
+    models:
+    - gemma-4-26B-A4B-it
+  - route: hf
+    repo_id: google/gemma-4-E4B-it
+    revision: ee0ef6023621cff504d758262d4e04895a5af4a2
+    models:
+    - gemma-4-E4B-it
+  - route: hf
+    repo_id: QCRI/Fanar-2-27B-Instruct
+    revision: 074005040e9c3511b1c43b4298bef09908285534
+    models:
+    - Fanar-2-27B-Instruct
+- id: falcon3
+  label: Falcon3
+  vendor: TII
+  route: hf
+  repo_id: tiiuae/Falcon3-7B-Instruct
+  revision: 1e57a0ecd176c7c139f289c60a74e57f887c3dfb
+  models:
+  - Falcon3-7B-Instruct
+  licence: falcon-llm-license (model card)
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents: []
+- id: falcon-h1
+  label: Falcon-H1
+  vendor: TII
+  route: hf
+  repo_id: tiiuae/Falcon-H1-34B-Instruct
+  revision: 6e6890e26cba1f58b1e6ee70d654ddf054f9fce8
+  models:
+  - Falcon-H1-34B-Instruct
+  licence: falcon-llm-license (model card)
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents: []
+- id: falcon-h1r
+  label: Falcon-H1R
+  vendor: TII
+  route: hf
+  repo_id: tiiuae/Falcon-H1R-7B
+  revision: a6f74bf181389908efd6970878d7ee2b42f5d417
+  models:
+  - Falcon-H1R-7B
+  licence: falcon-llm-license (model card)
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents: []
+- id: allam
+  label: ALLaM
+  vendor: HUMAIN
+  route: sentencepiece
+  repo_id: humain-ai/ALLaM-7B-Instruct-preview
+  revision: a28dd1e67420cde72d3629c8633a974cf7d9c366
+  file: tokenizer.model
+  models:
+  - ALLaM-7B-Instruct-preview
+  licence: Apache-2.0
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents: []
+- id: fanar-1
+  label: Fanar-1
+  vendor: QCRI
+  route: hf
+  repo_id: QCRI/Fanar-1-9B-Instruct
+  revision: d30938d0efb1fd251727ee96df6987802ff84662
+  models:
+  - Fanar-1-9B-Instruct
+  licence: Apache-2.0
+  models_basis: the model repository that publishes the tokenizer file
+  equivalents: []
+not_measured:
+- name: Claude
+  vendor: Anthropic
+  models: Claude models
+  reason: Token counts for these models come from the vendor's API with an API key; no keyed API was used for this release.
+  checked_on: '2026-10-16'
+- name: Gemini
+  vendor: Google
+  models: Gemini models
+  reason: Token counts for these models come from the vendor's API with an API key; no keyed API was used for this release.
+  checked_on: '2026-10-16'
+- name: GPT-6 models
+  vendor: OpenAI
+  models: gpt-6-astra, gpt-6.1-sol, gpt-6-luna
+  reason: No encoding is listed for these model names in tiktoken 0.14.0.
+  checked_on: '2026-10-16'
+- name: Llama 3.3 and Llama 4
+  vendor: Meta
+  models: Llama-3.3-70B-Instruct, Llama-4-Maverick-17B-128E-Instruct
+  reason: The tokenizer files are in gated repositories that require accepting the model licence.
+  checked_on: '2026-10-16'
+- name: Gemma 3
+  vendor: Google
+  models: gemma-3-27b-it
+  reason: The tokenizer files are in a gated repository that requires accepting the model licence.
+  checked_on: '2026-10-16'
+- name: Command A and Command R7B Arabic
+  vendor: Cohere
+  models: c4ai-command-a-03-2025, c4ai-command-r7b-arabic-02-2025
+  reason: The tokenizer files are in gated repositories that require an access request.
+  checked_on: '2026-10-16'
+- name: Jais
+  vendor: Inception
+  models: jais-family-30b-16k-chat, jais-adapted-70b-chat
+  reason: The tokenizer files are in gated repositories that require an access request.
+  checked_on: '2026-10-16'

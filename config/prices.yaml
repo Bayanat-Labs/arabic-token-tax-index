@@ -1,0 +1,109 @@
+version: 0.1.0
+notes: 'List prices in USD per million tokens, read from the official price pages on the retrieval date. Standard rates only:
+  no batch, cache or off-peak discounts. page_sha256 is the SHA-256 of the page HTML as served.'
+prices_not_shown:
+- tokeniser_id: cl100k_base
+  reason: gpt-4 and gpt-3.5-turbo are not listed on the official price page on the retrieval date.
+- tokeniser_id: qwen3
+  reason: The Qwen3 open-weight models measured here (Qwen3-235B-A22B, Qwen3-8B, Qwen3-Next-80B-A3B-Instruct) are not listed
+    on the official price page on the retrieval date.
+- tokeniser_id: mistral-tekken
+  reason: The official pricing page gives no per-model API price table in its archived text; its one example names "Mistral
+    Large" without a version.
+- tokeniser_id: gemma4
+  reason: 'The official Gemini API price page lists Gemma 4 on the free tier only (paid tier: not available).'
+- tokeniser_id: falcon3
+  reason: No official per-token price page was archived for this release.
+- tokeniser_id: falcon-h1
+  reason: No official per-token price page was archived for this release.
+- tokeniser_id: falcon-h1r
+  reason: No official per-token price page was archived for this release.
+- tokeniser_id: allam
+  reason: No official per-token price page was archived for this release.
+- tokeniser_id: fanar-1
+  reason: No official per-token price page was archived for this release.
+prices:
+- vendor: OpenAI
+  model_id: gpt-5.6-sol
+  model_version_on_page: null
+  tokeniser_id: o200k_base
+  mapping_basis: tiktoken 0.14.0 maps model names starting with gpt-5 to o200k_base
+  tier: Standard, short context. The page says promotional pricing for this model runs at least through 21 Nov 2026.
+  currency: USD
+  input_usd_per_mtok: 4.0
+  output_usd_per_mtok: 20.0
+  source_url: https://platform.openai.com/docs/pricing
+  retrieved_at: '2026-10-16T00:00:19Z'
+  page_sha256: d3fd57427c554e1bda28ba505afe98ccc9f79f1509d3ad0bc0da129bf7fb7221
+- vendor: OpenAI
+  model_id: gpt-5.3-codex
+  model_version_on_page: null
+  tokeniser_id: o200k_base
+  mapping_basis: tiktoken 0.14.0 maps model names starting with gpt-5 to o200k_base
+  tier: Standard (specialized models table)
+  currency: USD
+  input_usd_per_mtok: 1.75
+  output_usd_per_mtok: 14.0
+  source_url: https://platform.openai.com/docs/pricing
+  retrieved_at: '2026-10-16T00:00:19Z'
+  page_sha256: d3fd57427c554e1bda28ba505afe98ccc9f79f1509d3ad0bc0da129bf7fb7221
+- vendor: DeepSeek
+  model_id: deepseek-v4-pro
+  model_version_on_page: DeepSeek-V4-Pro-0813
+  tokeniser_id: deepseek
+  mapping_basis: the page names the model version DeepSeek-V4-Pro-0813, whose published tokenizer file is measured
+  tier: Peak rate, cache-miss input (off-peak rates are half)
+  currency: USD
+  input_usd_per_mtok: 1.32
+  output_usd_per_mtok: 3.96
+  source_url: https://api-docs.deepseek.com/quick_start/pricing
+  retrieved_at: '2026-10-16T00:00:19Z'
+  page_sha256: 210f102275ccf1a6542f08a3bc9e4b4c7c83278cb74b35217bffa112df6363b2
+- vendor: DeepSeek
+  model_id: deepseek-flash
+  model_version_on_page: DeepSeek-V4.1-Flash
+  tokeniser_id: deepseek
+  mapping_basis: the page names the model version DeepSeek-V4.1-Flash, whose published tokenizer file is measured
+  tier: Peak rate, cache-miss input (off-peak rates are half)
+  currency: USD
+  input_usd_per_mtok: 0.3
+  output_usd_per_mtok: 1.2
+  source_url: https://api-docs.deepseek.com/quick_start/pricing
+  retrieved_at: '2026-10-16T00:00:19Z'
+  page_sha256: 210f102275ccf1a6542f08a3bc9e4b4c7c83278cb74b35217bffa112df6363b2
+- vendor: Alibaba Cloud
+  model_id: qwen3.5-397b-a17b
+  model_version_on_page: Qwen3.5-397B-A17B
+  tokeniser_id: qwen3.5
+  mapping_basis: open-weight model of the same name; its published tokenizer file is measured
+  tier: International deployment, 0 to 256K input tokens per request
+  currency: USD
+  input_usd_per_mtok: 0.6
+  output_usd_per_mtok: 3.6
+  source_url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  retrieved_at: '2026-10-16T00:00:36Z'
+  page_sha256: 3ad7790a3426ee203ed8f03205732a39eb365ec4a97f835e9b82c30f54a19f26
+- vendor: Alibaba Cloud
+  model_id: qwen3.8-27b
+  model_version_on_page: Qwen3.8-27B
+  tokeniser_id: qwen3.5
+  mapping_basis: open-weight model of the same name; its published tokenizer file gives the same counts
+  tier: International deployment, 0 to 1M input tokens per request
+  currency: USD
+  input_usd_per_mtok: 0.5
+  output_usd_per_mtok: 3.0
+  source_url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  retrieved_at: '2026-10-16T00:00:36Z'
+  page_sha256: 3ad7790a3426ee203ed8f03205732a39eb365ec4a97f835e9b82c30f54a19f26
+- vendor: Alibaba Cloud
+  model_id: qwen3.8-2.4t-a95b
+  model_version_on_page: Qwen3.8-2.4T-A95B
+  tokeniser_id: qwen3.5
+  mapping_basis: open-weight model of the same name; its published tokenizer file gives the same counts
+  tier: International deployment, 0 to 1M input tokens per request
+  currency: USD
+  input_usd_per_mtok: 2.0
+  output_usd_per_mtok: 6.0
+  source_url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  retrieved_at: '2026-10-16T00:00:36Z'
+  page_sha256: 3ad7790a3426ee203ed8f03205732a39eb365ec4a97f835e9b82c30f54a19f26

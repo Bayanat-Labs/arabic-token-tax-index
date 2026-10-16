@@ -1,0 +1,10 @@
+tokeniser_id,reason
+cl100k_base,gpt-4 and gpt-3.5-turbo are not listed on the official price page on the retrieval date.
+qwen3,"The Qwen3 open-weight models measured here (Qwen3-235B-A22B, Qwen3-8B, Qwen3-Next-80B-A3B-Instruct) are not listed on the official price page on the retrieval date."
+mistral-tekken,"The official pricing page gives no per-model API price table in its archived text; its one example names ""Mistral Large"" without a version."
+gemma4,The official Gemini API price page lists Gemma 4 on the free tier only (paid tier: not available).
+falcon3,No official per-token price page was archived for this release.
+falcon-h1,No official per-token price page was archived for this release.
+falcon-h1r,No official per-token price page was archived for this release.
+allam,No official per-token price page was archived for this release.
+fanar-1,No official per-token price page was archived for this release.

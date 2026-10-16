@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arabic-token-tax-index"
+dynamic = ["version"]
+description = "Arabic token-tax index: tokens per 1,000 words and the Arabic/English token ratio on parallel text for LLM tokenisers, with cost per page at list prices. By Bayanat Labs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0 AND CC-BY-4.0"
+license-files = ["LICENSE", "LICENSE-data", "NOTICE"]
+authors = [{ name = "Bayanat Labs" }]
+dependencies = [
+  "tiktoken>=0.14.0",
+  "tokenizers>=0.22",
+  "sentencepiece>=0.2.0",
+  "huggingface_hub>=0.30",
+  "numpy>=1.24",
+  "pyyaml>=6",
+]
+keywords = ["arabic", "arabic-nlp", "tokenizer", "tokenization", "llm", "token-cost", "benchmark", "leaderboard"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: Arabic",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Text Processing :: Linguistic",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/Bayanat-Labs/arabic-token-tax-index"
+Repository = "https://github.com/Bayanat-Labs/arabic-token-tax-index"
+Issues = "https://github.com/Bayanat-Labs/arabic-token-tax-index/issues"
+Dataset = "https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index"
+
+[project.scripts]
+arabic-token-tax = "arabic_token_tax.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["arabic_token_tax", "arabic_token_tax.config"]
+
+[tool.setuptools.package-data]
+"arabic_token_tax.config" = ["*.yaml"]
+
+[tool.setuptools.dynamic]
+version = { attr = "arabic_token_tax.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"
+markers = ["network: needs internet access (set ARABIC_TOKEN_TAX_NETWORK=1)"]

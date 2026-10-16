@@ -1,0 +1,35 @@
+arabic-token-tax-index by Bayanat Labs
+Copyright 2026 Bayanat Labs
+
+This product includes software developed by Bayanat Labs (https://bayanatlabs.com).
+
+The code in this repository is licensed under the Apache License 2.0 (LICENSE).
+The index files in results/, the configuration in config/ and the documentation
+listed in LICENSE-data are licensed under the Creative Commons Attribution 4.0
+International License.
+
+Text sources. The harness downloads text at run time; no source text is stored
+in this repository.
+- United Nations Parallel Corpus v1.0, 2015 test and development sets. Source:
+  the United Nations. Ziemski, M., Junczys-Dowmunt, M., and Pouliquen, B. (2016),
+  The United Nations Parallel Corpus, Language Resources and Evaluation
+  (LREC'16), Portoroz, Slovenia, May 2016. The corpus is made available by the
+  United Nations without warranty of any kind under its disclaimer and terms of
+  use (https://www.un.org/dgacm/en/content/uncorpus).
+- Tatoeba (https://tatoeba.org), sentences licensed under CC BY 2.0 FR.
+  results/v0.1.0/tatoeba_ids.txt lists Tatoeba sentence ids only.
+
+Tokenizers. Tokenizer files are downloaded from their publishers at run time and
+are not included in this repository. Each keeps its own licence (see
+config/tokenisers.yaml). tiktoken is MIT-licensed (OpenAI).
+
+Prices in config/prices.yaml are facts read from the vendors' public price
+pages on the retrieval date given for each row; the pages themselves are not
+reproduced.
+
+Runtime dependencies: tiktoken (MIT), tokenizers (Apache-2.0), sentencepiece
+(Apache-2.0), huggingface_hub (Apache-2.0), NumPy (BSD-3-Clause), PyYAML (MIT).
+No third-party code is copied into this repository.
+
+The Bayanat Labs name, logo and project branding are not licensed under the
+Apache License 2.0 or under any data license in this repository.

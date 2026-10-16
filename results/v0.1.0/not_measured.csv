@@ -1,0 +1,8 @@
+name,vendor,models,reason,checked_on
+Claude,Anthropic,Claude models,Token counts for these models come from the vendor's API with an API key; no keyed API was used for this release.,2026-10-16
+Gemini,Google,Gemini models,Token counts for these models come from the vendor's API with an API key; no keyed API was used for this release.,2026-10-16
+GPT-6 models,OpenAI,"gpt-6-astra, gpt-6.1-sol, gpt-6-luna",No encoding is listed for these model names in tiktoken 0.14.0.,2026-10-16
+Llama 3.3 and Llama 4,Meta,"Llama-3.3-70B-Instruct, Llama-4-Maverick-17B-128E-Instruct",The tokenizer files are in gated repositories that require accepting the model licence.,2026-10-16
+Gemma 3,Google,gemma-3-27b-it,The tokenizer files are in a gated repository that requires accepting the model licence.,2026-10-16
+Command A and Command R7B Arabic,Cohere,"c4ai-command-a-03-2025, c4ai-command-r7b-arabic-02-2025",The tokenizer files are in gated repositories that require an access request.,2026-10-16
+Jais,Inception,"jais-family-30b-16k-chat, jais-adapted-70b-chat",The tokenizer files are in gated repositories that require an access request.,2026-10-16
