@@ -55,6 +55,8 @@ Only tokenizer files are downloaded (at the revision pinned in `config/tokeniser
 
 When several models publish tokenizer files, one is measured and the others are listed as `equivalents`. At run time every equivalent is loaded and must give the same token count as the measured file on every segment of every slice and on every probe line; `tokenisers.json` records the result (`identical_counts`, `differing_texts`).
 
+Model lists (`models`, with `models_basis`): for the two OpenAI encodings, the model names that tiktoken 0.14.0 maps to the encoding in its model-to-encoding table; these names are not separate tokenizer files and were not count-checked (the gpt-oss tokenizer files, listed as equivalents, were). For the other tokenisers, the model whose repository publishes the measured file, plus the models of the checked equivalents.
+
 ## 5. Measures
 
 For a tokeniser on a slice, with sums over all segments:
@@ -80,7 +82,7 @@ Decoding uses the library's plain decode without clean-up of spaces (tiktoken: b
 
 ## 7. Cost
 
-Prices are list prices in USD per million tokens, read from each vendor's official price page and listed with the page URL, the retrieval time (UTC) and the SHA-256 of the page as served (`config/prices.yaml`). Standard rates only: no batch, cache, off-peak or regional discounts. A price is shown only when the page names a model whose tokenizer is measured here, either through tiktoken's model table or because the page names an open-weight model whose tokenizer file is published. For those API models the index assumes the API uses the published tokenizer of the same model.
+Prices are list prices in USD per million tokens, read from each vendor's official price page and listed with the page URL, the retrieval time (UTC) and the SHA-256 of the page as served (`config/prices.yaml`). No batch, cache, off-peak or regional discounts. When the page marks a price as promotional, the row carries a `price_note` and `promotional_through` (in version 0.1.1: `gpt-5.6-sol`, promotional price, at least through 21 Nov 2026). A price is shown only when the page names a model whose tokenizer is measured here, either through tiktoken's model table or because the page names an open-weight model whose tokenizer file is published. For those API models the index assumes the API uses the published tokenizer of the model version named on the page; `mapping_basis` in each row says how the model was matched to a measured tokenizer.
 
 For each priced model: page cost = tokens per page × price ÷ 1,000,000, for the English page and for its Arabic translation, at the input price and at the output price. `extra_*_usd_per_1000_pages` is the difference for 1,000 pages. Cost is computed from the rounded tokens-per-page values in `results.csv`, so it can be recomputed from the released files.
 

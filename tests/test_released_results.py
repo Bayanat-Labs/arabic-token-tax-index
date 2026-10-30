@@ -8,7 +8,7 @@ import statistics
 import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RES = os.path.join(ROOT, "results", "v0.1.0")
+RES = os.path.join(ROOT, "results", "v0.1.1")
 
 
 def _csv(name):

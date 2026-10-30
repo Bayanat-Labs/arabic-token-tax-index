@@ -1,8 +1,0 @@
-vendor,model_id,tokeniser_id,input_usd_per_mtok,output_usd_per_mtok,en_tokens_per_page,ar_tokens_per_page,en_page_input_usd,ar_page_input_usd,en_page_output_usd,ar_page_output_usd,extra_input_usd_per_1000_pages,extra_output_usd_per_1000_pages,price_retrieved_at,price_source_url
-OpenAI,gpt-5.6-sol,o200k_base,4.0,20.0,1232.1,1680.8,0.004928,0.006723,0.024642,0.033616,1.7948,8.974,2026-10-16T00:00:19Z,https://platform.openai.com/docs/pricing
-OpenAI,gpt-5.3-codex,o200k_base,1.75,14.0,1232.1,1680.8,0.002156,0.002941,0.017249,0.023531,0.7852,6.2818,2026-10-16T00:00:19Z,https://platform.openai.com/docs/pricing
-DeepSeek,deepseek-v4-pro,deepseek,1.32,3.96,1230.7,2032.0,0.001625,0.002682,0.004874,0.008047,1.0577,3.1731,2026-10-16T00:00:19Z,https://api-docs.deepseek.com/quick_start/pricing
-DeepSeek,deepseek-flash,deepseek,0.3,1.2,1230.7,2032.0,0.000369,0.00061,0.001477,0.002438,0.2404,0.9616,2026-10-16T00:00:19Z,https://api-docs.deepseek.com/quick_start/pricing
-Alibaba Cloud,qwen3.5-397b-a17b,qwen3.5,0.6,3.6,1285.3,1617.7,0.000771,0.000971,0.004627,0.005824,0.1994,1.1966,2026-10-16T00:00:36Z,https://www.alibabacloud.com/help/en/model-studio/model-pricing
-Alibaba Cloud,qwen3.8-27b,qwen3.5,0.5,3.0,1285.3,1617.7,0.000643,0.000809,0.003856,0.004853,0.1662,0.9972,2026-10-16T00:00:36Z,https://www.alibabacloud.com/help/en/model-studio/model-pricing
-Alibaba Cloud,qwen3.8-2.4t-a95b,qwen3.5,2.0,6.0,1285.3,1617.7,0.002571,0.003235,0.007712,0.009706,0.6648,1.9944,2026-10-16T00:00:36Z,https://www.alibabacloud.com/help/en/model-studio/model-pricing

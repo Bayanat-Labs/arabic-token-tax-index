@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.1.1
 notes: 'Tokenizer files only; revisions pinned. Each `equivalents` entry is checked at run time: it must give the same token
   count as the main entry on every segment and probe line.'
 tokenisers:

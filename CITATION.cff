@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use the index or the harness, please cite it as below and give the index version and run date."
 type: software
 title: "Arabic Token-Tax Index"
-version: "0.1.0"
-date-released: "2026-10-16"
+version: "0.1.1"
+date-released: "2026-10-30"
 license: Apache-2.0
 repository-code: "https://github.com/Bayanat-Labs/arabic-token-tax-index"
 url: "https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index"

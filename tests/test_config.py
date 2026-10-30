@@ -38,6 +38,7 @@ def test_prices_point_at_measured_tokenisers():
         assert p["tokeniser_id"] in ids
         assert p["input_usd_per_mtok"] > 0 and p["output_usd_per_mtok"] > 0
         assert p["source_url"].startswith("https://") and re.fullmatch(r"[0-9a-f]{64}", p["page_sha256"])
+        assert (p["price_note"] is None) == (p["promotional_through"] is None), p["model_id"]
     shown = {p["tokeniser_id"] for p in prices["prices"]}
     not_shown = {p["tokeniser_id"] for p in prices["prices_not_shown"]}
     assert shown | not_shown == ids and not (shown & not_shown)

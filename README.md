@@ -2,13 +2,13 @@
 
 How many more tokens does the same content take in Arabic than in English? This repository holds the harness (`arabic-token-tax`) and the index files for 12 LLM tokenisers: tokens per 1,000 words, the Arabic/English token ratio on parallel text with a 95% confidence interval, characters per token, a diacritics round trip, and the cost of a page at list prices. By **Bayanat Labs**.
 
-**[Leaderboard on Hugging Face](https://huggingface.co/spaces/Bayanat-Labs/arabic-token-tax-index)** · **[Dataset with per-segment counts](https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index)** · [Method](docs/METHOD.md) · Version 0.1.0, run 2026-10-16
+**[Leaderboard on Hugging Face](https://huggingface.co/spaces/Bayanat-Labs/arabic-token-tax-index)** · **[Dataset with per-segment counts](https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index)** · [Method](docs/METHOD.md) · Version 0.1.1: token counts run 2026-10-16, prices read 2026-10-30
 
 On the United Nations 2015 test set (3,990 Arabic–English sentence pairs from 731 UN documents), the median Arabic/English token ratio across the 12 tokenisers measured is **1.42**: the same content takes 1.42 times as many tokens in Arabic as in English. The ratio runs from 0.93 (ALLaM) to 3.35 (Falcon3). A ratio below 1 means Arabic took fewer tokens than English.
 
 ## Results: UN 2015 test set
 
-| Tokeniser | Models (same token counts) | Arabic/English ratio (95% CI) | Tokens per 1,000 Arabic words | Tokens per 1,000 English words | Characters per token, Arabic | Vocabulary |
+| Tokeniser | Models | Arabic/English ratio (95% CI) | Tokens per 1,000 Arabic words | Tokens per 1,000 English words | Characters per token, Arabic | Vocabulary |
 |---|---|---|---|---|---|---|
 | ALLaM | ALLaM-7B-Instruct-preview | **0.93** (0.92–0.94) | 1,408 | 1,352 | 3.74 | 64,000 |
 | Falcon-H1 | Falcon-H1-34B-Instruct | **1.04** (1.03–1.05) | 1,508 | 1,295 | 3.49 | 261,120 |
@@ -23,7 +23,7 @@ On the United Nations 2015 test set (3,990 Arabic–English sentence pairs from 
 | OpenAI cl100k_base | gpt-4, gpt-3.5-turbo | **3.08** (3.05–3.10) | 4,275 | 1,240 | 1.23 | 100,277 |
 | Falcon3 | Falcon3-7B-Instruct | **3.35** (3.32–3.39) | 4,788 | 1,274 | 1.10 | 131,072 |
 
-The ratio is total Arabic tokens ÷ total English tokens over the same 3,990 sentence pairs; the 95% interval comes from 10,000 bootstrap resamples of the 731 UN documents. "Same token counts" lists models whose own tokenizer files were checked to give the same count as the measured file on every segment of every slice. Fewer tokens means lower cost and more text per context window; it is not a measure of model quality.
+The ratio is total Arabic tokens ÷ total English tokens over the same 3,990 sentence pairs; the 95% interval comes from 10,000 bootstrap resamples of the 731 UN documents. Models: for the two OpenAI encodings, the model names that tiktoken 0.14.0 maps to the encoding (its model-to-encoding table, not a count check), plus gpt-oss, whose tokenizer files were checked; for the other tokenisers, the model that publishes the measured tokenizer file and models whose own tokenizer files were checked to give the same count on every segment of every slice. Fewer tokens means lower cost and more text per context window; it is not a measure of model quality.
 
 Every one of the 12 tokenisers gives back exactly the same code points after encoding and decoding, both for the synthetic diacritics probe (22 lines, 508 marked letters) and for all 3,990 Arabic UN segments, 987 of which carry at least one diacritic.
 
@@ -50,11 +50,11 @@ Arabic/English token ratio by slice. The Tatoeba slices are short, conversationa
 
 ## Cost per page
 
-A page is the content of 1,000 English words; on the UN test set its Arabic translation has about 892 Arabic words. Page cost = tokens for the page × list price ÷ 1,000,000, at the input price (sending the page to a model) and at the output price (a model writing it). Standard rates in USD with no batch, cache or off-peak discounts, read from the official price pages on 2026-10-16 (UTC). For the DeepSeek and Qwen rows the index assumes that the API serves the published tokenizer of the model named on the price page.
+A page is the content of 1,000 English words; on the UN test set its Arabic translation has about 892 Arabic words. Page cost = tokens for the page × list price ÷ 1,000,000, at the input price (sending the page to a model) and at the output price (a model writing it). List prices in USD as shown on the vendors' official price pages on 2026-10-30 (UTC), without batch, cache or off-peak discounts; `gpt-5.6-sol` is at a promotional price, at least through 21 Nov 2026. For the DeepSeek and Qwen rows the index assumes that the API serves the published tokenizer of the model version named on the price page.
 
 | Model | Tokeniser | Price per 1M tokens, input / output | English page, input | Arabic page, input | English page, output | Arabic page, output | Extra per 1,000 Arabic pages, input / output |
 |---|---|---|---|---|---|---|---|
-| OpenAI `gpt-5.6-sol` | OpenAI o200k_base | $4.00 / $20.00 | $0.00493 | $0.00672 | $0.02464 | $0.03362 | $1.79 / $8.97 |
+| OpenAI `gpt-5.6-sol` (promotional price, at least through 21 Nov 2026) | OpenAI o200k_base | $4.00 / $20.00 | $0.00493 | $0.00672 | $0.02464 | $0.03362 | $1.79 / $8.97 |
 | OpenAI `gpt-5.3-codex` | OpenAI o200k_base | $1.75 / $14.00 | $0.00216 | $0.00294 | $0.01725 | $0.02353 | $0.79 / $6.28 |
 | DeepSeek `deepseek-v4-pro` | DeepSeek V3 / V4 | $1.32 / $3.96 | $0.00162 | $0.00268 | $0.00487 | $0.00805 | $1.06 / $3.17 |
 | DeepSeek `deepseek-flash` | DeepSeek V3 / V4 | $0.30 / $1.20 | $0.00037 | $0.00061 | $0.00148 | $0.00244 | $0.24 / $0.96 |
@@ -64,10 +64,10 @@ A page is the content of 1,000 English words; on the UN test set its Arabic tran
 
 Price not shown:
 
-- **OpenAI cl100k_base**: gpt-4 and gpt-3.5-turbo are not listed on the official price page on the retrieval date.
-- **Qwen3**: The Qwen3 open-weight models measured here (Qwen3-235B-A22B, Qwen3-8B, Qwen3-Next-80B-A3B-Instruct) are not listed on the official price page on the retrieval date.
-- **Mistral Tekken**: The official pricing page gives no per-model API price table in its archived text; its one example names "Mistral Large" without a version.
-- **Gemma 4 / Fanar-2**: The official Gemini API price page lists Gemma 4 on the free tier only (paid tier: not available).
+- **OpenAI cl100k_base**: The index price table has no row for these models; the OpenAI price page read on 2026-10-30 lists gpt-4-0613 and gpt-3.5-turbo in its full model list.
+- **Qwen3**: The Qwen3 open-weight models measured here (Qwen3-235B-A22B, Qwen3-8B, Qwen3-Next-80B-A3B-Instruct) are not listed on the Alibaba Cloud Model Studio price page read on 2026-10-30.
+- **Mistral Tekken**: The official pricing page archived on 2026-10-16 gives no per-model API price table in its text; its one example names "Mistral Large" without a version.
+- **Gemma 4 / Fanar-2**: The official Gemini API price page archived on 2026-10-16 lists Gemma 4 on the free tier only (paid tier: not available).
 - **Falcon3**: No official per-token price page was archived for this release.
 - **Falcon-H1**: No official per-token price page was archived for this release.
 - **Falcon-H1R**: No official per-token price page was archived for this release.
@@ -87,7 +87,7 @@ Price not shown:
 ## Install
 
 ```bash
-pip install "git+https://github.com/Bayanat-Labs/arabic-token-tax-index@v0.1.0"
+pip install "git+https://github.com/Bayanat-Labs/arabic-token-tax-index@v0.1.1"
 ```
 
 Python 3.10 or later. `pip install arabic-token-tax-index` will work once the package is published. Tokenizer files are downloaded from Hugging Face on first use (tokenizer files only, at pinned revisions; no model weights).
@@ -104,12 +104,12 @@ arabic-token-tax words "تقرير الأمين العام"     # the wordcount-
 ```bash
 git clone https://github.com/Bayanat-Labs/arabic-token-tax-index.git
 cd arabic-token-tax-index
-git checkout v0.1.0
+git checkout v0.1.1
 python -m venv .venv && . .venv/bin/activate
 pip install .
-arabic-token-tax fetch --data data --tatoeba-ids results/v0.1.0/tatoeba_ids.txt
+arabic-token-tax fetch --data data --tatoeba-ids results/v0.1.1/tatoeba_ids.txt
 arabic-token-tax run --config config/tokenisers.yaml --prices config/prices.yaml --data data --out out --run-date 2026-10-16
-arabic-token-tax compare out results/v0.1.0
+arabic-token-tax compare out results/v0.1.1
 ```
 
 `fetch` downloads the UN archive (checked against a pinned SHA-256) and the Tatoeba exports; `--tatoeba-ids` keeps the sentence pairs used in this release. `compare` checks that every token and word count matches. Tatoeba sentences can be edited after release, so a few Tatoeba counts may differ; the UN counts must match exactly.
@@ -120,13 +120,13 @@ arabic-token-tax compare out results/v0.1.0
 |---|---|
 | `config/tokenisers.yaml` | the tokenisers: route, pinned revision, models, and the equivalent tokenizer files checked at run time; the list of tokenisers not measured |
 | `config/prices.yaml` | list prices with source URL, retrieval time and the SHA-256 of the page as served; tokenisers without a price and why |
-| `results/v0.1.0/results.csv` | one row per tokeniser and slice (also `results.json`) |
-| `results/v0.1.0/tokenisers.csv` | versions, file hashes, vocabulary sizes, round-trip results and equivalence checks (also `tokenisers.json`) |
-| `results/v0.1.0/costs.csv`, `prices.csv`, `prices_not_shown.csv` | cost per page and the prices used |
-| `results/v0.1.0/slices.csv` | sources, licences, pairs kept and dropped by reason |
-| `results/v0.1.0/not_measured.csv` | tokenisers not measured and why |
-| `results/v0.1.0/summary.json` | headline numbers per slice |
-| `results/v0.1.0/tatoeba_ids.txt` | Tatoeba sentence id pairs used |
+| `results/v0.1.1/results.csv` | one row per tokeniser and slice (also `results.json`) |
+| `results/v0.1.1/tokenisers.csv` | versions, file hashes, vocabulary sizes, round-trip results and equivalence checks (also `tokenisers.json`) |
+| `results/v0.1.1/costs.csv`, `prices.csv`, `prices_not_shown.csv` | cost per page and the prices used |
+| `results/v0.1.1/slices.csv` | sources, licences, pairs kept and dropped by reason |
+| `results/v0.1.1/not_measured.csv` | tokenisers not measured and why |
+| `results/v0.1.1/summary.json` | headline numbers per slice |
+| `results/v0.1.1/tatoeba_ids.txt` | Tatoeba sentence id pairs used |
 | `docs/METHOD.md` | the full method: cleaning, word count, measures, interval, round trips, cost |
 
 Per-segment token counts (and the cleaned UN text) are in the [dataset](https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index).
@@ -152,7 +152,7 @@ Code: Apache-2.0 (`LICENSE`). Index files, configuration and documentation: CC B
 ## Cite
 
 ```
-Bayanat Labs (2026). Arabic Token-Tax Index, version 0.1.0 (run 2026-10-16). https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index. CC BY 4.0.
+Bayanat Labs (2026). Arabic Token-Tax Index, version 0.1.1 (run 2026-10-16). https://huggingface.co/datasets/Bayanat-Labs/arabic-token-tax-index. CC BY 4.0.
 ```
 
 `CITATION.cff` has the same in machine-readable form.
